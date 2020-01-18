@@ -13,7 +13,7 @@ public class Avion {
     @DatabaseField(generatedId = true)
     private int id;
 
-    @DatabaseField(columnName = POLJE_NAZIV,canBeNull = false, unique=false)
+    @DatabaseField(columnName = POLJE_OZNAKA,canBeNull = false, unique=false)
     private String naziv;
     @DatabaseField(columnName = POLJE_OPIS)
     private String opis;
