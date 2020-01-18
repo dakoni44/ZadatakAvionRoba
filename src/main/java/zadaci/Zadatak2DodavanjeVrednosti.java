@@ -8,6 +8,7 @@ import model.Avion;
 import model.Roba;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public class Zadatak2DodavanjeVrednosti {
@@ -25,7 +26,7 @@ public class Zadatak2DodavanjeVrednosti {
             Avion a1=new Avion("Avion1",34);
             avionDao.create(a1);
             Avion a2=new Avion("Avion2",21);
-            avionDao.create(a1);
+            avionDao.create(a2);
             Roba r1=new Roba("Patike", "Duboke patike",1,a1);
             robaDao.create(r1);
             Roba r2=new Roba("Kosulja", "Kosulja na duge rukave",0.4,a1);
@@ -37,7 +38,15 @@ public class Zadatak2DodavanjeVrednosti {
             Roba r5=new Roba("Stolica", "Plasticna stolica",2.4,a2);
             robaDao.create(r5);
 
-            robaDao.create(r1);
+            List<Roba> roba=robaDao.queryForAll();
+            for(Roba r:roba) {
+                System.out.println(" Roba = " +r);
+                System.out.println();
+            }
+
+
+
+
         }catch (Exception e) {
             e.printStackTrace();
         }finally {
