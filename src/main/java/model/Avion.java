@@ -1,12 +1,12 @@
 package model;
 
 
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 
 public class Avion {
-    private int id;
-    private String oznaka;
-    private int rasponKrila;
+
     public static final String POLJE_OZNAKA="oznaka";
     public static final String POLJE_RASPON_KRILA="raspon_krila";
 
@@ -14,11 +14,11 @@ public class Avion {
     private int id;
 
     @DatabaseField(columnName = POLJE_OZNAKA,canBeNull = false, unique=false)
-    private String naziv;
-    @DatabaseField(columnName = POLJE_OPIS)
-    private String opis;
-    @DatabaseField(columnName = POLJE_CENA,canBeNull = false)
-    private double cena;
+    private String oznaka;
+    @DatabaseField(columnName = POLJE_RASPON_KRILA,canBeNull = false)
+    private int rasponKrila;
+    @ForeignCollectionField(foreignFieldName = "avion",eager=false,maxEagerLevel = 1)
+    private ForeignCollection<Roba> roba;
 
 
 

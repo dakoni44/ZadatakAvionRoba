@@ -1,5 +1,9 @@
 package zadaci;
 
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.support.ConnectionSource;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,24 +11,20 @@ import java.sql.Statement;
 
 public class Zadatak4BrisanjeVrednosti {
     public static void main(String[] args) {
-        {
-            Connection c = null;
-            Statement stmt = null;
-            try {
-                Class.forName("org.sqlite.JDBC");
-                c = DriverManager.getConnection(Konstante.DATABASE_URL);
-                System.out.println("Uspesno konektovano na bazu");
-            } catch (Exception e) {
-                System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            } finally {
+        ConnectionSource connectionSource = null;
+        try {
+            // create our data-source for the database
+            connectionSource = new JdbcConnectionSource("jdbc:sqlite:avionRoba.db");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            if (connectionSource != null) {
                 try {
-
-                    c.close();
-                } catch (SQLException e) {
+                    connectionSource.close();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            System.out.println("Tabele kreirane uspesno");
         }
 
     }
