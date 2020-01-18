@@ -1,13 +1,25 @@
 package model;
 
+import com.j256.ormlite.field.DatabaseField;
+
 public class Roba {
+
+    public static final String POLJE_NAZIV="naziv";
+    public static final String POLJE_OPIS="opis";
+    public static final String POLJE_TEZINA="tezina";
+
+    @DatabaseField(generatedId = true)
     private int id;
-    private String opis;
+
+    @DatabaseField(columnName = POLJE_NAZIV,canBeNull = false, unique=false)
     private String naziv;
+    @DatabaseField(columnName = POLJE_OPIS,canBeNull = false, unique=false)
+    private String opis;
+    @DatabaseField(columnName = POLJE_TEZINA,canBeNull = false)
     private double tezina;
-    public static final POLJE_NAZIV="naziv";
-    public static final POLJE_OPIS="opis";
-    public static final POLJE_TEZINA="tezina";
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, canBeNull = false)
+    private Avion avion;
+
 
     public Roba() {
     }
