@@ -24,11 +24,13 @@ public class Roba {
     public Roba() {
     }
 
-    public Roba( String opis, String naziv, double tezina) {
+    public Roba( String opis, String naziv, double tezina, Avion avion) {
         this.opis = opis;
         this.naziv = naziv;
         this.tezina = tezina;
+        this.avion=avion;
     }
+
 
     public int getId() {
         return id;

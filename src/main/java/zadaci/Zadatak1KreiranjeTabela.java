@@ -17,6 +17,8 @@ public class Zadatak1KreiranjeTabela {
 
             connectionSource = new JdbcConnectionSource("jdbc:sqlite:avionRoba.db");
 
+            TableUtils.dropTable(connectionSource, Avion.class,true);
+            TableUtils.dropTable(connectionSource, Roba.class,true);
             TableUtils.createTable(connectionSource, Avion.class);
             TableUtils.createTable(connectionSource, Roba.class);
 
